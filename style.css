@@ -92,9 +92,20 @@ nav {
 }
 
 .nav-links {
-    list-style: none;
+    position: fixed;
+    right: 0px;
+    height: 100vh;
+    top: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 998;
 }
 
 .nav-links a {
@@ -135,6 +146,7 @@ nav {
 
 .hero-content {
     flex: 1;
+    order: 2;
     min-width: 300px;
 }
 
@@ -157,8 +169,23 @@ nav {
 }
 
 .hero-btns {
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
 }
+
+.hero-btns .btn {
+    margin: 0; /* Reset global margins */
+    margin-bottom: 15px; /* Force space between buttons */
+    width: 200px;
+}
+
+.hero-btns .btn:last-child {
+    margin-bottom: 0;
+}
+
 
 .btn {
     padding: 0.8rem 2rem;
@@ -186,6 +213,8 @@ nav {
 
 .hero-visual {
     flex: 1;
+    order:1;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     min-width: 300px;
@@ -197,9 +226,8 @@ nav {
     border: 3px solid white;
     border-radius: 50% 50% 50% 10%; /* Unique shape */
     overflow: hidden;
+    max-width: 80vw;
     margin: 0 auto;
-    max-width: 90vw;
-    max-height: 90vw;
     box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
     position: relative;
     background: white;
@@ -571,7 +599,17 @@ footer {
 /* --- Mobile Responsive --- */
 @media screen and (max-width: 768px) {
     .nav-links { display: none; } /* Simplified for demo */
-    .hero { flex-direction: column-reverse; text-align: center; padding-top: 2rem; }
+    .hero {
+        min-height: 100vh;
+        /* Switch to column so we can re-order easily */
+        flex-direction: column;
+        /* Stop centering vertically; start from top instead */
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        /* This 110px controls the exact distance from the Logo to your Photo */
+        padding-top: 110px;
+    }
     .hero h1 { font-size: 2.5rem; }
     .timeline::after { left: 31px; }
     .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
@@ -648,12 +686,13 @@ footer {
     }
 
     .nav-links li {
-        margin: 20px 0;
+        margin: 25px 0;
         opacity: 0; /* Hidden for fade animation */
     }
 
     .nav-links a {
         font-size: 1.5rem;
+        color: #333;
     }
 
     /* Class to show menu */
@@ -665,9 +704,12 @@ footer {
     .hamburger {
         display: block;
         cursor: pointer;
-        z-index: 999; /* Above the menu */
+        z-index: 999;
         color: var(--accent-color);
         font-size: 1.8rem;
+        position: absolute;
+        right: 30px;
+        top: 30px;
     }
 
     /* 4. Timeline Mobile Fixes */
