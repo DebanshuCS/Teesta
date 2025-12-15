@@ -1,4 +1,14 @@
 /* --- Global Variables & Reset --- */
+
+html, body {
+    overflow-x: hidden; /* Cuts off content spilling to the right */
+    max-width: 100vw;   /* Ensures page is never wider than screen */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative; /* Helps contain absolute elements */
+}
+
 :root {
     --bg-gradient: linear-gradient(135deg, #FFDAB9 0%, #ffc3a0 50%, #f7b7b7 100%);
     --glass-bg: rgba(255, 255, 255, 0.45);
@@ -34,8 +44,9 @@ html {
 .circle {
     position: fixed;
     border-radius: 50%;
-    z-index: -1;
+    z-index: -1; /* Keeps it behind text */
     filter: blur(80px);
+    pointer-events: none; /* Prevents them from interfering with clicks */
 }
 
 .circle-1 {
