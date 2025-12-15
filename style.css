@@ -205,7 +205,7 @@ nav {
 
 /* --- Common Section Styles --- */
 .section {
-    padding: 4rem 10%;
+    padding: 2rem 10%;
 }
 
 .section-title {
@@ -390,6 +390,169 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Influencer Section Specific Styles */
+.influencer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.insta-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.insta-handle {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.insta-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.stat-box h4 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+    font-weight: 700;
+}
+
+.stat-box p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.btn-insta {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #d62976;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.btn-insta:hover {
+    transform: scale(1.05);
+    background: #ac205e;
+}
+
+.brands-wrapper h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.brand-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.brand-tag {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.brand-tag.highlight {
+    background: #ffebf2;
+    color: #d62976;
+    border-color: #d62976;
+}
+
+@media (max-width: 768px) {
+    .influencer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* later changes with education box adjustments and golden bar styles*/
+
+/* 1. Tighten the spacing */
+#education {
+    padding-bottom: 1rem !important; /* Reduces bottom space of education */
+}
+
+#highlight {
+    margin-top: 1rem !important; /* Reduces top space of achievement */
+}
+
+/* 2. Golden Bar Container */
+.gold-separator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0; /* Small vertical buffer */
+    position: relative;
+    z-index: 10;
+}
+
+/* 3. The Bar Itself */
+.gold-bar {
+    width: 60%; /* Adjusts how wide the line is */
+    height: 4px;
+    /* Golden Gradient */
+    background: linear-gradient(90deg, #b8860b, #FFD700, #ffec8b, #FFD700, #b8860b);
+    background-size: 200% auto;
+    border-radius: 50%; /* Tapered edges */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 5px rgba(255, 215, 0, 0.8);
+    animation: goldShine 2.5s linear infinite;
+    position: relative;
+}
+
+/* 4. Sparkles on the ends */
+.gold-bar::before, .gold-bar::after {
+    content: "✨";
+    position: absolute;
+    font-size: 1.2rem;
+    top: -12px;
+    color: #FFF;
+    text-shadow: 0 0 10px #FFD700;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.gold-bar::before { left: -15px; }
+.gold-bar::after { right: -15px; animation-delay: 1s; }
+
+/* Animations */
+@keyframes goldShine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+}
+
 
 /* --- Mobile Responsive --- */
 @media screen and (max-width: 768px) {
