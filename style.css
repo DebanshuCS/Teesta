@@ -592,6 +592,8 @@ footer {
     transform: translateY(-5px);
 }
 
+
+
 /* --- MOBILE RESPONSIVE STYLES --- */
 /* --- MOBILE RESPONSIVE STYLES (UPDATED) --- */
 @media screen and (max-width: 768px) {
@@ -720,12 +722,6 @@ footer {
     }
 }
 
-/* Ensure Button is hidden on Desktop */
-@media screen and (min-width: 769px) {
-    #myBtn {
-        display: none !important;
-    }
-}
 
 /* Keyframe for link fade in */
 @keyframes navLinkFade {
