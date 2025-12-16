@@ -593,72 +593,138 @@ footer {
 }
 
 /* --- MOBILE RESPONSIVE STYLES --- */
+/* --- MOBILE RESPONSIVE STYLES (UPDATED) --- */
 @media screen and (max-width: 768px) {
 
-    /* 1. HERO SECTION: Full Height for "Front Page" feel */
+    /* 1. HERO SECTION FIXES */
     .hero {
-        min-height: 100vh; /* Takes full screen height */
-        padding-top: 10px; /* Space for navbar */
-        flex-direction: row; /* Image top, text bottom */
-        justify-content: left;
+        min-height: 100vh;
+        /* Stack vertically: Photo on top, Text below */
+        flex-direction: column;
+        /* Start content from the top, not center */
+        justify-content: flex-start;
+        align-items: center;
         text-align: center;
+
+        /* [CHANGE 1] REDUCED GAP: Controls space between Logo and Photo */
+        padding-top: 80px;
     }
 
-    /* 2. NAVIGATION: Hamburger Menu Setup */
-    body {
-        overflow-x: hidden; /* Prevent horizontal scroll */
+    /* Force the Image to appear ABOVE the text */
+    .hero-visual {
+        order: 1;
+        margin-bottom: 20px;
     }
+
+    .hero-content {
+        order: 2;
+    }
+
+    /* 2. PROFILE PHOTO SIZE */
+    .profile-frame {
+        width: 250px; /* Smaller size for mobile */
+        height: 250px;
+        margin: 0 auto;
+        max-width: 80vw;
+    }
+
+    /* [CHANGE 2] BUTTONS FIX (Side-by-Side + Spacing) */
+    .hero-btns {
+        display: flex;
+        flex-direction: row; /* Horizontal row */
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .hero-btns .btn {
+        /* Force spacing on left and right of EACH button */
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        margin-bottom: 0 !important;
+
+        width: auto;
+        min-width: 120px;
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* 3. NAVIGATION & OTHERS (Standard Mobile Logic) */
+    body { overflow-x: hidden; }
 
     .nav-links {
         position: fixed;
         right: 0px;
         height: 100vh;
         top: 0;
-        background: rgba(255, 255, 255, 0.95); /* Glassy White Background */
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 70%; /* Covers 70% of screen */
-        transform: translateX(100%); /* Hidden initially */
-        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
         z-index: 998;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     }
 
     .nav-links li {
-        margin: 20px 0;
-        opacity: 0; /* Hidden for fade animation */
+        margin: 25px 0;
+        opacity: 0;
     }
 
     .nav-links a {
         font-size: 1.5rem;
+        color: #333;
     }
 
-    /* Class to show menu */
-    .nav-active {
-        transform: translateX(0%);
-    }
+    .nav-active { transform: translateX(0%); }
 
-    /* 3. HAMBURGER ICON */
     .hamburger {
         display: block;
         cursor: pointer;
-        z-index: 999; /* Above the menu */
+        z-index: 999;
         color: var(--accent-color);
         font-size: 1.8rem;
+        position: absolute;
+        right: 30px;
+        top: 30px;
     }
 
-    /* 4. Timeline Mobile Fixes */
+    /* Layout Patches */
     .timeline::after { left: 31px; }
     .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
     .timeline-item:nth-child(even) { left: 0%; text-align: left; }
     .timeline-item:nth-child(odd) { left: 0%; text-align: left; }
     .timeline-item::after { left: 23px; }
-
-    /* 5. Grid Fixes */
     .grid-layout, .influencer-grid { grid-template-columns: 1fr; }
+
+    /* Back to top button for mobile */
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: #d66d75;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+}
+
+/* Ensure Button is hidden on Desktop */
+@media screen and (min-width: 769px) {
+    #myBtn {
+        display: none !important;
+    }
 }
 
 /* Keyframe for link fade in */
