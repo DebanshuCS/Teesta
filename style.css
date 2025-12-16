@@ -598,9 +598,9 @@ footer {
     /* 1. HERO SECTION: Full Height for "Front Page" feel */
     .hero {
         min-height: 100vh; /* Takes full screen height */
-        padding-top: 30px; /* Space for navbar */
-        flex-direction: column-reverse; /* Image top, text bottom */
-        justify-content: center;
+        padding-top: 10px; /* Space for navbar */
+        flex-direction: row; /* Image top, text bottom */
+        justify-content: left;
         text-align: center;
     }
 
