@@ -729,3 +729,40 @@ footer {
     to { opacity: 1; transform: translateX(0); }
 }
 
+
+
+/* --- UPDATED PATCH: Animated Black Underline with Golden Glow --- */
+
+/* 1. Setup the parent heading */
+.section-title {
+    position: relative;
+    padding-bottom: 15px; /* Create space between text and line */
+}
+
+/* 2. Create the line (Start state: Width 0, No Glow) */
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%); /* Centers the line */
+
+    height: 4px;           /* Thickness */
+    background-color: black; /* Core color */
+    border-radius: 2px;    /* Rounded edges */
+
+    width: 0px;            /* Start invisible/collapsed */
+    opacity: 0;
+    box-shadow: none;      /* No glow initially */
+
+    /* Animation settings - added box-shadow for smooth glowing effect */
+    transition: width 2s ease-out, opacity 0.5s ease-in, box-shadow 2s ease-out;
+}
+
+/* 3. The End State (Triggered when heading appears) */
+.section-title.show::after {
+    width: 100px; /* Final width */
+    opacity: 1;
+    /* Slight Golden Glow: offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 0 12px rgba(237, 132, 109, 0.8), 0 0 5px rgba(253, 182, 0, 0.5);
+}
